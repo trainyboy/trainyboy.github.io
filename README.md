@@ -12,7 +12,7 @@ python3 -m http.server 4180 --directory dist
 
 Then visit http://localhost:4180.
 
-## Write a blog post ("Notes")
+## Write a blog post
 
 ```bash
 node tools/new-post.mjs "Post title" tag1,tag2
@@ -43,8 +43,8 @@ Edit `dist/content/projects.json`. Each project gets a page at `project.html?id=
 
 Every placeholder is in `dist/assets/placeholders/` and is labelled with its size. Put real images in `dist/assets/`, then update the path:
 
-- Big background photo behind your name: `dist/styles.css` (search for `hero.svg`). Use a wide landscape photo, about 2400px wide.
-- Round portrait in About: `dist/index.html` (search for `portrait.svg`). Use a square photo.
+- Big background photo behind your name: replace `dist/assets/hero.jpg` (or change the path in `dist/styles.css`, search for `hero.jpg`). Landscape, about 2000–2400px wide.
+- Headshot in About: replace `dist/assets/headshot.jpg` (square photo).
 - Project thumbnails: `cover` in `dist/content/projects.json`
 - Project demos and galleries: `dist/content/projects.json`
 - Post images: inside the post's Markdown

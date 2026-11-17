@@ -3,16 +3,18 @@
     "id": "inferlens",
     "title": "InferLens",
     "headline": "Making LLM inference legible.",
-    "summary": "An interface for beginners to load traces, inspect metric cards, and see queue, prefill, and decode timelines — revealing where inference latency actually comes from.",
-    "period": "2026 — Present",
+    "summary": "A browser tool that opens a recorded vLLM trace and shows where the time went (queue, prefill, decode), with metrics, an animated replay, charts, and a beginner walkthrough.",
+    "period": "2026",
     "context": "Johns Hopkins ACM",
     "role": "Frontend Engineering Intern",
     "stack": [
-      "Vue.js",
+      "JavaScript",
+      "HTML / CSS",
+      "SVG",
       "vLLM",
-      "Data visualization"
+      "node:test"
     ],
-    "cover": "assets/placeholders/inferlens-cover.svg",
+    "cover": "assets/projects/inferlens/cover.jpg",
     "featured": true,
     "links": {
       "demo": "",
@@ -21,37 +23,52 @@
     },
     "demo": {
       "type": "image",
-      "src": "assets/placeholders/inferlens-demo.svg",
-      "caption": "Placeholder — swap for a screen recording (type \"video\") or a live embed (type \"iframe\")."
+      "src": "assets/projects/inferlens/home.jpg",
+      "alt": "InferLens home page showing one request split into queue, prefill, and decode",
+      "caption": "The InferLens home page: one recorded Qwen3-4B request on vLLM, split into queue (5 ms), prefill (79 ms), and decode (1,766 ms)."
     },
     "sections": [
       {
         "heading": "The problem",
-        "body": "LLM workloads running on vLLM are hard for new users to reason about: latency is spread across queueing, prefill, and decode, and raw numbers don't show where the time goes."
+        "body": "When an LLM answers slowly, it's hard for newcomers to tell why. A single reply is made of waiting in a queue, reading the prompt (prefill), and writing tokens one at a time (decode), and raw numbers like TTFT and TPOT don't show which stage the time went to."
       },
       {
         "heading": "What it does",
-        "body": "InferLens lets beginners load traces, inspect metric cards, and see queue, prefill, and decode on a timeline, so performance across workloads becomes something you can look at rather than guess."
+        "body": "InferLens opens a trace file recorded from a vLLM run and turns it into something you can see. It shows the run configuration, latency and throughput metrics, GPU and KV-cache utilization, and an animated replay of the run. Charts cover queue dynamics, KV-cache use over time, phase durations, and token cadence. Everything runs in the browser; the trace never leaves your computer."
+      },
+      {
+        "heading": "Learning the pipeline",
+        "body": "A separate Learn page walks a beginner through one ordinary 1.85-second reply, step by step: the wait, the read, and the long stretch of writing. Each step shows how the formulas for TTFT, TPOT, and throughput come straight from that trace."
       },
       {
         "heading": "How it's built",
-        "placeholder": "Architecture, data flow from trace to timeline, and the design decisions behind the visualizations."
+        "body": "InferLens is split across three teams: inference collects measurements from vLLM, analysis owns the shared trace schema and derived metrics, and the frontend loads that trace. I built the frontend: trace loading, metric cards, the queue, prefill, and decode timelines, the dashboard charts, the animation and styling, and the first version of the Learn page. It's framework-free JavaScript, every chart is hand-drawn SVG, and it's covered by Node tests."
       },
       {
         "heading": "What I learned",
-        "placeholder": "Reflections, open questions, and what you would do next."
+        "placeholder": "What was hardest about explaining inference to beginners, and what you'd build next."
       }
     ],
     "gallery": [
       {
-        "src": "assets/placeholders/inferlens-1.svg",
-        "alt": "Placeholder for the InferLens trace loader",
-        "caption": "Trace loader — placeholder"
+        "src": "assets/projects/inferlens/trace-metrics.jpg",
+        "alt": "InferLens metrics view for a loaded trace",
+        "caption": "Metrics view for the bundled synthetic stress trace (demo data, not a benchmark)."
       },
       {
-        "src": "assets/placeholders/inferlens-2.svg",
-        "alt": "Placeholder for the InferLens timeline view",
-        "caption": "Queue / prefill / decode timeline — placeholder"
+        "src": "assets/projects/inferlens/trace-charts.jpg",
+        "alt": "InferLens charts view with queue dynamics and KV cache utilization",
+        "caption": "Charts view: queue dynamics, KV-cache use, phase durations, and token cadence (synthetic demo data)."
+      },
+      {
+        "src": "assets/projects/inferlens/learn.jpg",
+        "alt": "InferLens Learn page introduction",
+        "caption": "Learn page: a short tour of what happens during one reply."
+      },
+      {
+        "src": "assets/projects/inferlens/learn-walkthrough.jpg",
+        "alt": "InferLens step-by-step walkthrough",
+        "caption": "Step-by-step walkthrough of a single recorded request."
       }
     ]
   },
@@ -59,66 +76,104 @@
     "id": "one-minute-utopia",
     "title": "One Minute Utopia",
     "headline": "A clearer path to Baltimore 311.",
-    "summary": "A mobile workflow that uses Gemini to classify photos, flag uncertainty, group similar incidents, and make civic reports more reliable.",
+    "summary": "Snap a photo of a broken streetlight or cracked road and you're done: Gemini classifies it, similar reports are grouped into one incident, and an agent files it with the right city agency once it matters.",
     "period": "2026",
-    "context": "HopHacks",
-    "role": "Hackathon project",
+    "context": "HopHacks Fall",
+    "role": "Team of 4 · first hackathon",
     "stack": [
-      "Python",
       "TypeScript",
-      "PostgreSQL",
+      "Next.js",
+      "Node.js",
+      "Supabase",
+      "Gemini API",
       "Leaflet",
-      "Gemini"
+      "Playwright",
+      "Vercel"
     ],
-    "cover": "assets/placeholders/utopia-cover.svg",
+    "cover": "assets/projects/one-minute-utopia/cover.jpg",
     "featured": true,
     "links": {
-      "demo": "",
-      "code": "",
-      "writeup": ""
+      "demo": "https://oneminuteutopia.vercel.app/",
+      "code": "https://github.com/gitpaperclip/oneminuteutopia/",
+      "writeup": "https://devpost.com/software/one-minute-utopioa"
     },
     "demo": {
-      "type": "image",
-      "src": "assets/placeholders/utopia-demo.svg",
-      "caption": "Placeholder — add a demo video or the deployed app URL."
+      "type": "youtube",
+      "id": "fkaCGGVYz8s",
+      "caption": "Hop Hacks 2026 – One Minute Utopia. Try the live app with the Live demo button above."
     },
     "sections": [
       {
         "heading": "The problem",
-        "body": "Civic reports to Baltimore 311 are often vague, duplicated, or miscategorized, which makes them harder for the city to act on."
+        "body": "Apps like Citizen surface gunshots and fires, but almost nobody reports a cracked road or a broken traffic light, and many people don't know 311 handles them. Reporting through agency websites or a 311 call is slow (one of us waited about 10 minutes on hold), and research shows people report less when the process is longer. Small problems go unfixed because reporting them is a chore."
       },
       {
         "heading": "What it does",
-        "body": "Residents snap a photo; Gemini classifies it, flags uncertainty instead of guessing, and similar incidents are grouped so reports arrive cleaner and more reliable."
+        "body": "You take a picture. Gemini classifies the issue and the app attaches time and location automatically. That's all the user does, and it takes seconds. Behind the scenes, reports in the same category with overlapping locations are merged into a single incident, and each report gets a severity score from 1 to 10 (litter is around 4, a badly cracked road around 7). Serious issues are escalated right away; minor ones wait until enough people report them, so the city only hears about problems that actually bother people, and never gets duplicates."
       },
       {
-        "heading": "How it's built",
-        "placeholder": "Pipeline from photo to classified report, how uncertainty is surfaced, and the map/grouping logic."
+        "heading": "Beacon, the reporting agent",
+        "body": "Once an incident's score is high enough, Beacon works out which agency should get it, fills in that agency's web form with Playwright, and flags the incident as reported so it's never filed twice. To avoid sending test data to real agencies, Beacon runs against two mock government sites we built. In the meantime, users are shown the right contact info and form links for their issue."
       },
       {
-        "heading": "What I learned",
-        "placeholder": "What worked under hackathon time pressure, what you'd change, and any feedback from judges or users."
+        "heading": "How we built it",
+        "body": "Three parts: a Next.js front end, a Node.js and Supabase (SQL) backend, and the Playwright reporting agent, with the Gemini API for image analysis, Leaflet and OpenStreetMap for the incident map, and Vercel for hosting. We developed with an agentic workflow: four coding agents with separate roles for development, review, QA, and polish."
+      },
+      {
+        "heading": "What we learned",
+        "body": "It was our first hackathon, and we shipped a working full-stack app that does everything we set out to do. The hard parts were setting up the Gemini API on Google Cloud, building reliable image analysis, and finding a consistent rule for when an incident deserves to be reported. Next: real government reporting APIs, cities beyond Baltimore, and stronger validation of AI confidence and user trust."
       }
     ],
     "gallery": [
       {
-        "src": "assets/placeholders/utopia-1.svg",
-        "alt": "Placeholder for the report flow",
-        "caption": "Report flow — placeholder"
+        "src": "assets/projects/one-minute-utopia/onboarding.jpg",
+        "alt": "One Minute Utopia: User onboarding page",
+        "caption": "User onboarding page"
       },
       {
-        "src": "assets/placeholders/utopia-2.svg",
-        "alt": "Placeholder for the incident map",
-        "caption": "Incident map — placeholder"
+        "src": "assets/projects/one-minute-utopia/image-capture.jpg",
+        "alt": "One Minute Utopia: Image capture page",
+        "caption": "Image capture page"
+      },
+      {
+        "src": "assets/projects/one-minute-utopia/confirmation.jpg",
+        "alt": "One Minute Utopia: Post-report confirmation page",
+        "caption": "Post-report confirmation page"
+      },
+      {
+        "src": "assets/projects/one-minute-utopia/report-analysis.jpg",
+        "alt": "One Minute Utopia: Report analysis page",
+        "caption": "Report analysis page"
+      },
+      {
+        "src": "assets/projects/one-minute-utopia/incident-map.jpg",
+        "alt": "One Minute Utopia: Community incidents map",
+        "caption": "Community incidents map"
+      },
+      {
+        "src": "assets/projects/one-minute-utopia/incident-map-zoomed.jpg",
+        "alt": "One Minute Utopia: Community incidents map, zoomed",
+        "caption": "Community incidents map, zoomed"
+      },
+      {
+        "src": "assets/projects/one-minute-utopia/beacon-agent.jpg",
+        "alt": "One Minute Utopia: Beacon autonomous reporting agent",
+        "caption": "Beacon autonomous reporting agent"
+      },
+      {
+        "src": "assets/projects/one-minute-utopia/infrastructure.jpg",
+        "alt": "One Minute Utopia: Infrastructure overview",
+        "caption": "Infrastructure overview"
       }
-    ]
+    ],
+    "award": "Won “Make it Legendary”"
   },
   {
     "id": "quant-signals",
-    "title": "Quantitative strategy research",
-    "headline": "Testing signals, not hunches.",
-    "summary": "Researching momentum and mean-reversion strategies with gradient descent, genetic algorithms, risk controls, and historical backtests.",
-    "period": "2026 — Present",
+    "title": "Modeling and Optimization",
+    "headline": "Finding the best move, in markets and in Wordle.",
+    "summary": "Applying modeling and optimization to real decisions: momentum and mean-reversion trading strategies tuned with gradient descent and genetic algorithms, and an analysis of Wordle.",
+    "period": "2026",
     "context": "Directed Reading",
     "role": "Independent research",
     "stack": [
@@ -140,16 +195,20 @@
     },
     "sections": [
       {
-        "heading": "The question",
+        "heading": "Trading strategies",
         "body": "Can momentum and mean-reversion signals hold up once they are tuned systematically and tested against history with risk controls in place?"
       },
       {
-        "heading": "Approach",
+        "heading": "How the trading models are tuned",
         "body": "Parameters are searched with gradient descent and genetic algorithms, then evaluated in historical backtests with risk controls."
       },
       {
-        "heading": "Results so far",
+        "heading": "Trading results so far",
         "placeholder": "Key charts, metrics you trust, and the caveats (overfitting, costs, regime changes)."
+      },
+      {
+        "heading": "Wordle analysis",
+        "placeholder": "What you analyzed in Wordle, your approach (e.g. how you modeled guesses or scored words), and what you found."
       }
     ],
     "gallery": [
