@@ -1,0 +1,168 @@
+[
+  {
+    "id": "inferlens",
+    "title": "InferLens",
+    "headline": "Making LLM inference legible.",
+    "summary": "An interface for beginners to load traces, inspect metric cards, and see queue, prefill, and decode timelines — revealing where inference latency actually comes from.",
+    "period": "2026 — Present",
+    "context": "Johns Hopkins ACM",
+    "role": "Frontend Engineering Intern",
+    "stack": [
+      "Vue.js",
+      "vLLM",
+      "Data visualization"
+    ],
+    "cover": "assets/placeholders/inferlens-cover.svg",
+    "featured": true,
+    "links": {
+      "demo": "",
+      "code": "",
+      "writeup": ""
+    },
+    "demo": {
+      "type": "image",
+      "src": "assets/placeholders/inferlens-demo.svg",
+      "caption": "Placeholder — swap for a screen recording (type \"video\") or a live embed (type \"iframe\")."
+    },
+    "sections": [
+      {
+        "heading": "The problem",
+        "body": "LLM workloads running on vLLM are hard for new users to reason about: latency is spread across queueing, prefill, and decode, and raw numbers don't show where the time goes."
+      },
+      {
+        "heading": "What it does",
+        "body": "InferLens lets beginners load traces, inspect metric cards, and see queue, prefill, and decode on a timeline, so performance across workloads becomes something you can look at rather than guess."
+      },
+      {
+        "heading": "How it's built",
+        "placeholder": "Architecture, data flow from trace to timeline, and the design decisions behind the visualizations."
+      },
+      {
+        "heading": "What I learned",
+        "placeholder": "Reflections, open questions, and what you would do next."
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/placeholders/inferlens-1.svg",
+        "alt": "Placeholder for the InferLens trace loader",
+        "caption": "Trace loader — placeholder"
+      },
+      {
+        "src": "assets/placeholders/inferlens-2.svg",
+        "alt": "Placeholder for the InferLens timeline view",
+        "caption": "Queue / prefill / decode timeline — placeholder"
+      }
+    ]
+  },
+  {
+    "id": "one-minute-utopia",
+    "title": "One Minute Utopia",
+    "headline": "A clearer path to Baltimore 311.",
+    "summary": "A mobile workflow that uses Gemini to classify photos, flag uncertainty, group similar incidents, and make civic reports more reliable.",
+    "period": "2026",
+    "context": "HopHacks",
+    "role": "Hackathon project",
+    "stack": [
+      "Python",
+      "TypeScript",
+      "PostgreSQL",
+      "Leaflet",
+      "Gemini"
+    ],
+    "cover": "assets/placeholders/utopia-cover.svg",
+    "featured": true,
+    "links": {
+      "demo": "",
+      "code": "",
+      "writeup": ""
+    },
+    "demo": {
+      "type": "image",
+      "src": "assets/placeholders/utopia-demo.svg",
+      "caption": "Placeholder — add a demo video or the deployed app URL."
+    },
+    "sections": [
+      {
+        "heading": "The problem",
+        "body": "Civic reports to Baltimore 311 are often vague, duplicated, or miscategorized, which makes them harder for the city to act on."
+      },
+      {
+        "heading": "What it does",
+        "body": "Residents snap a photo; Gemini classifies it, flags uncertainty instead of guessing, and similar incidents are grouped so reports arrive cleaner and more reliable."
+      },
+      {
+        "heading": "How it's built",
+        "placeholder": "Pipeline from photo to classified report, how uncertainty is surfaced, and the map/grouping logic."
+      },
+      {
+        "heading": "What I learned",
+        "placeholder": "What worked under hackathon time pressure, what you'd change, and any feedback from judges or users."
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/placeholders/utopia-1.svg",
+        "alt": "Placeholder for the report flow",
+        "caption": "Report flow — placeholder"
+      },
+      {
+        "src": "assets/placeholders/utopia-2.svg",
+        "alt": "Placeholder for the incident map",
+        "caption": "Incident map — placeholder"
+      }
+    ]
+  },
+  {
+    "id": "quant-signals",
+    "title": "Quantitative strategy research",
+    "headline": "Testing signals, not hunches.",
+    "summary": "Researching momentum and mean-reversion strategies with gradient descent, genetic algorithms, risk controls, and historical backtests.",
+    "period": "2026 — Present",
+    "context": "Directed Reading",
+    "role": "Independent research",
+    "stack": [
+      "MATLAB",
+      "Optimization",
+      "Backtesting.py"
+    ],
+    "cover": "assets/placeholders/quant-cover.svg",
+    "featured": true,
+    "links": {
+      "demo": "",
+      "code": "",
+      "writeup": ""
+    },
+    "demo": {
+      "type": "image",
+      "src": "assets/placeholders/quant-demo.svg",
+      "caption": "Placeholder — add a backtest chart or an interactive notebook embed."
+    },
+    "sections": [
+      {
+        "heading": "The question",
+        "body": "Can momentum and mean-reversion signals hold up once they are tuned systematically and tested against history with risk controls in place?"
+      },
+      {
+        "heading": "Approach",
+        "body": "Parameters are searched with gradient descent and genetic algorithms, then evaluated in historical backtests with risk controls."
+      },
+      {
+        "heading": "Results so far",
+        "placeholder": "Key charts, metrics you trust, and the caveats (overfitting, costs, regime changes)."
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/placeholders/quant-1.svg",
+        "alt": "Placeholder for a strategy comparison chart",
+        "caption": "Strategy comparison — placeholder"
+      },
+      {
+        "src": "assets/placeholders/quant-2.svg",
+        "alt": "Placeholder for a parameter search chart",
+        "caption": "Parameter search — placeholder"
+      }
+    ]
+  }
+]
