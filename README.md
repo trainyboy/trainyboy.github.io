@@ -59,4 +59,10 @@ Prefer `.webp` or `.jpg` around 1600px wide.
 
 ## Publish
 
-Pushing to `main` on GitHub (`trainyboy/trainyboy.github.io`) runs `.github/workflows/pages.yml`, which publishes `dist/` to https://trainyboy.github.io. In the repo's Settings → Pages, "Source" must be set to **GitHub Actions**.
+The live site is the `gh-pages` branch of `trainyboy/trainyboy.github.io`, which holds the contents of `dist/`. After committing changes on `main`, publish with:
+
+```bash
+git subtree push --prefix dist origin gh-pages
+```
+
+GitHub then serves it at https://trainyboy.github.io within a minute or two (Settings → Pages → Source: "Deploy from a branch", branch `gh-pages`, folder `/ (root)`).
