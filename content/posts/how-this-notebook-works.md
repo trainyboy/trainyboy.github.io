@@ -1,8 +1,8 @@
-> This is a sample post. Replace it with your first real note, or delete it from `content/posts.json` once you have one.
+> This is a sample post. Replace it with your first real post, or delete it from `content/posts.json` once you have one.
 
-Posts are plain Markdown files. Write in any editor, drop the file into `content/posts/`, and add one entry to `content/posts.json`. The site picks it up automatically: the home page shows the three newest, and the Notes page lists everything with tag filters.
+Posts are plain Markdown files. Write in any editor, drop the file into `content/posts/`, and add one entry to `content/posts.json`. The site picks it up automatically: the home page shows the three newest, and the Blog page lists everything with tag filters.
 
-## Publishing a note
+## Publishing a post
 
 The quickest way is the helper script from the project root:
 

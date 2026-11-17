@@ -9,6 +9,8 @@ const parseDate = (s) => { const [y, m, d] = s.split('-').map(Number); return ne
 const fmtDate = (s) => parseDate(s).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 const byNewest = (a, b) => parseDate(b.date) - parseDate(a.date);
 const pad = (n) => String(n).padStart(2, '0');
+const TROPHY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h10v2h4v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 15v3h3v2H8v-2h3v-3a5 5 0 0 1-3.7-3H7a4 4 0 0 1-4-4V5h4zm0 4H5v1a2 2 0 0 0 2 2zm10 0v3a2 2 0 0 0 2-2V7z"/></svg>';
+const awardHTML = (p) => p.award ? `<span class="award-badge">${TROPHY}${esc(p.award)}</span>` : '';
 const tagsHTML = (tags = []) => tags.length ? `<ul class="tags">${tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : '';
 
 /* ---------- Reveal on scroll ---------- */
@@ -71,9 +73,9 @@ const pages = {
     }).catch(() => { projEl.innerHTML = loadError('projects'); });
     getJSON('content/posts.json').then((list) => {
       const latest = list.filter((p) => !p.draft).sort(byNewest).slice(0, 3);
-      notesEl.innerHTML = latest.length ? latest.map(noteRow).join('') : '<li class="empty">No notes yet — the first one is coming.</li>';
+      notesEl.innerHTML = latest.length ? latest.map(noteRow).join('') : '<li class="empty">No posts yet — the first one is coming.</li>';
       observeReveals(notesEl);
-    }).catch(() => { notesEl.innerHTML = `<li>${loadError('notes')}</li>`; });
+    }).catch(() => { notesEl.innerHTML = `<li>${loadError('blog posts')}</li>`; });
   },
 
   async projects() {
@@ -100,7 +102,12 @@ const pages = {
 
     const d = p.demo || {};
     let stage;
-    if (d.type === 'iframe' && d.src) stage = `<iframe src="${esc(d.src)}" title="${esc(p.title)} live demo" loading="lazy" allow="fullscreen; clipboard-write" referrerpolicy="no-referrer"></iframe>`;
+    if (d.type === 'youtube' && d.id) stage = `
+      <button class="yt" type="button" data-yt="${esc(d.id)}" aria-label="Play ${esc(p.title)} demo video">
+        <img src="https://i.ytimg.com/vi/${esc(d.id)}/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${esc(d.id)}/hqdefault.jpg'">
+        <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+      </button>`;
+    else if (d.type === 'iframe' && d.src) stage = `<iframe src="${esc(d.src)}" title="${esc(p.title)} live demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
     else if (d.type === 'video' && d.src) stage = `<video src="${esc(d.src)}" ${d.poster ? `poster="${esc(d.poster)}"` : ''} controls playsinline preload="metadata"></video>`;
     else stage = `<img src="${esc(d.src || 'assets/placeholders/post-image.svg')}" alt="${esc(d.alt || p.title + ' demo placeholder')}">`;
     const live = d.type === 'iframe' && d.src;
@@ -113,14 +120,9 @@ const pages = {
             <p class="eyebrow">${esc(p.context || 'Project')} · ${esc(p.period)}</p>
             <h1>${esc(p.title)}</h1>
             <p class="headline">${esc(p.headline)}</p>
+            ${p.award ? `<p class="award-line">${awardHTML(p)}</p>` : ''}
             <div class="proj-links">${link(p.links?.demo, 'Live demo', true)}${link(p.links?.code, 'Source code')}${p.links?.writeup ? link(p.links.writeup, 'Write-up') : ''}</div>
           </div>
-          <dl class="spec">
-            <div><dt>Role</dt><dd>${esc(p.role || '—')}</dd></div>
-            <div><dt>When</dt><dd>${esc(p.period)}</dd></div>
-            <div><dt>Context</dt><dd>${esc(p.context || '—')}</dd></div>
-            <div><dt>Stack</dt><dd>${esc((p.stack || []).join(', '))}</dd></div>
-          </dl>
         </header>
 
         <section class="demo" aria-label="Demo">
@@ -143,6 +145,14 @@ const pages = {
           <figure class="reveal"><img src="${esc(g.src)}" alt="${esc(g.alt || '')}" loading="lazy">${g.caption ? `<figcaption>${esc(g.caption)}</figcaption>` : ''}</figure>`).join('')}
         </div>` : ''}
       </div>`;
+    root.querySelectorAll('.gallery img').forEach((img) => {
+      const mark = () => { if (img.naturalWidth > img.naturalHeight) img.closest('figure').classList.add('wide'); };
+      img.complete ? mark() : img.addEventListener('load', mark, { once: true });
+    });
+    root.querySelector('.yt')?.addEventListener('click', (e) => {
+      const id = e.currentTarget.dataset.yt;
+      e.currentTarget.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="${esc(p.title)} demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+    });
     observeReveals(root);
   },
 
@@ -151,7 +161,7 @@ const pages = {
     const filterEl = $('[data-filter]');
     let posts;
     try { posts = (await getJSON('content/posts.json')).filter((p) => !p.draft).sort(byNewest); }
-    catch { listEl.innerHTML = `<li>${loadError('notes')}</li>`; return; }
+    catch { listEl.innerHTML = `<li>${loadError('blog posts')}</li>`; return; }
 
     const tags = [...new Set(posts.flatMap((p) => p.tags || []))].sort();
     let active = new URLSearchParams(location.search).get('tag') || 'all';
@@ -178,12 +188,12 @@ const pages = {
   async post() {
     const slug = new URLSearchParams(location.search).get('slug');
     const root = $('[data-post]');
-    const fail = (msg) => { root.innerHTML = `<div class="shell" style="padding:80px 0"><div class="empty">${msg} <a class="text-link" href="blog.html">All notes →</a></div></div>`; };
+    const fail = (msg) => { root.innerHTML = `<div class="shell" style="padding:80px 0"><div class="empty">${msg} <a class="text-link" href="blog.html">All posts →</a></div></div>`; };
     let all;
-    try { all = await getJSON('content/posts.json'); } catch { return fail("Couldn't load notes."); }
+    try { all = await getJSON('content/posts.json'); } catch { return fail("Couldn't load the blog."); }
     const posts = all.filter((p) => !p.draft).sort(byNewest);
     const p = all.find((x) => x.slug === slug); // drafts are reachable by direct URL for previewing
-    if (!p) return fail(`No note called “${esc(slug || '')}”.`);
+    if (!p) return fail(`No post called “${esc(slug || '')}”.`);
     const i = posts.indexOf(p);
 
     let md;
@@ -201,7 +211,7 @@ const pages = {
     root.innerHTML = `
       <div class="shell">
         <header class="post-head">
-          <a class="crumb" href="blog.html">← All notes</a>
+          <a class="crumb" href="blog.html">← All posts</a>
           <h1>${esc(p.title)}</h1>
           <div class="post-meta">${p.draft ? '<span style="color:var(--coral)">Draft · not listed</span>' : ''}<time datetime="${esc(p.date)}">${fmtDate(p.date)}</time><span>${minutes} min read</span>${tagsHTML(p.tags)}</div>
         </header>
@@ -209,7 +219,7 @@ const pages = {
           <article class="prose">${html}</article>
           <aside class="post-aside" data-outline hidden><b>Outline</b></aside>
         </div>
-        <nav class="post-nav" aria-label="More notes">
+        <nav class="post-nav" aria-label="More posts">
           ${older ? `<a href="post.html?slug=${encodeURIComponent(older.slug)}"><small>← Older</small>${esc(older.title)}</a>` : '<span></span>'}
           ${newer ? `<a class="next" href="post.html?slug=${encodeURIComponent(newer.slug)}"><small>Newer →</small>${esc(newer.title)}</a>` : ''}
         </nav>

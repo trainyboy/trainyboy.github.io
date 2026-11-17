@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f3b4c"/><stop offset=".55" stop-color="#6b6f80"/><stop offset=".8" stop-color="#c98b6b"/><stop offset="1" stop-color="#e2a77f"/></linearGradient></defs>
-<rect width="1920" height="1080" fill="url(#sky)"/>
-<path d="M0 760 L220 610 L360 690 L560 470 L720 620 L860 540 L1040 700 L1240 430 L1420 640 L1600 560 L1920 720 V1080 H0Z" fill="#3b4250"/>
-<path d="M0 860 L260 740 L480 820 L700 700 L960 840 L1180 720 L1420 830 L1680 740 L1920 820 V1080 H0Z" fill="#262b33"/>
-<path d="M0 960 L320 880 L640 950 L980 870 L1300 960 L1640 890 L1920 950 V1080 H0Z" fill="#181b20"/>
-<text x="960" y="1040" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#ffffff" fill-opacity=".5" letter-spacing="2">PLACEHOLDER · replace with your own photo</text>
-</svg>

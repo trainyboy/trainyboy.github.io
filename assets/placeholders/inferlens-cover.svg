@@ -4,7 +4,7 @@
 <g transform="translate(600 401.4)" fill="none" stroke="#9aa3a8" stroke-width="4.615384615384615" stroke-linejoin="round">
 <rect x="-105.3" y="-81" width="210.6" height="162" rx="14.58"/>
 <path d="M-105.3 48.6 L-32.4 -12.15 L20.25 36.45 L52.65 8.1 L105.3 52.65"/>
-<circle cx="48.6" cy="-36.45" r="14.58" fill="#e8590c" stroke="none"/></g>
+<circle cx="48.6" cy="-36.45" r="14.58" fill="#2350c8" stroke="none"/></g>
 <g font-family="Helvetica, Arial, sans-serif" text-anchor="middle">
 <text x="600" y="547.2" font-size="40" fill="#3a4045" font-weight="600">InferLens · cover image</text>
 <text x="600" y="601.7454545454545" font-size="19" fill="#6b7378" letter-spacing="2">PLACEHOLDER · 1200×900 · assets/placeholders/inferlens-cover.svg</text>
