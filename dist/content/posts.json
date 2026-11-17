@@ -1,9 +1,12 @@
 [
   {
-    "slug": "how-this-notebook-works",
-    "title": "Sample post: how this notebook works",
-    "date": "2026-11-16",
-    "summary": "A placeholder entry that doubles as a template — every Markdown feature the blog supports, plus how to publish a new post.",
-    "tags": ["meta", "template"]
+    "slug": "gift-of-fire-computer-ethics",
+    "title": "The Gift of Fire: A Reflection on Computer Ethics",
+    "date": "2026-10-06",
+    "summary": "Written for my computer ethics course: why computing is a dual-use power like fire, across autonomy, system safety, privacy, intellectual property, research ethics, and cyber warfare.",
+    "tags": [
+      "computer ethics",
+      "coursework"
+    ]
   }
 ]
