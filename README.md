@@ -56,3 +56,7 @@ Prefer `.webp` or `.jpg` around 1600px wide.
 - `dist/index.html`: home page (photo intro, about, résumé, projects, notes, contact)
 - `dist/site.js`: shared behaviour plus rendering for projects and posts
 - `dist/styles.css`: all styles; colour tokens are at the top
+
+## Publish
+
+Pushing to `main` on GitHub (`trainyboy/trainyboy.github.io`) runs `.github/workflows/pages.yml`, which publishes `dist/` to https://trainyboy.github.io. In the repo's Settings → Pages, "Source" must be set to **GitHub Actions**.
